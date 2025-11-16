@@ -22,14 +22,27 @@ const htmlPage = `
       body {
         background-color: #f4f7f6;
       }
+      
+      /* --- Keyframes for "pop-in" animation --- */
+      @keyframes popIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
 
-      /* --- Hero Section --- */
+      /* --- Hero Section (Colorful Gradient) --- */
       .hero {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1504805572947-34074f8d3f71?q=80&w=2070');
+        /* New colorful gradient */
+        background: linear-gradient(45deg, #3498db, #8e44ad, #e74c3c);
+        
         height: 100vh;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite; /* Animates the gradient */
         
         display: flex;
         flex-direction: column;
@@ -38,6 +51,14 @@ const htmlPage = `
         text-align: center;
         color: white;
       }
+      
+      /* --- Animation for the background gradient --- */
+      @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
 
       .hero h1 {
         font-size: 3.5rem;
@@ -45,6 +66,7 @@ const htmlPage = `
         max-width: 800px;
         line-height: 1.2;
         margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
 
       .hero p {
@@ -53,87 +75,68 @@ const htmlPage = `
         margin-bottom: 2.5rem;
       }
 
+      /* --- New Button Style --- */
       .hero-button {
         display: inline-block;
         padding: 12px 24px;
-        background-color: #3498db;
-        color: white;
+        background-color: #ffffff; /* White button */
+        color: #333; /* Dark text */
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 700;
         border-radius: 5px;
-        transition: background-color 0.3s ease;
+        transition: transform 0.3s ease;
       }
 
       .hero-button:hover {
-        background-color: #2980b9;
-      }
-
-      /* --- This is the new "Submitted by" text --- */
-      .submitted-by {
-        font-size: 1rem;
-        font-weight: 500;
-        margin-top: 30px;
-        margin-bottom: 0; /* Reset margin */
-        cursor: pointer;
-        border-bottom: 2px dotted #ffffff80;
+        transform: scale(1.05); /* Grow on hover */
       }
 
       /* --- This is the new details box --- */
       .details-container {
-        background: rgba(0, 0, 0, 0.4);
+        /* Colorful semi-transparent background */
+        background: linear-gradient(45deg, rgba(231, 76, 60, 0.8), rgba(142, 68, 173, 0.8));
+        
         border-radius: 8px;
+        padding: 20px 30px;
+        margin-top: 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         
-        /* These properties make it hidden by default */
-        opacity: 0;
-        max-height: 0;
-        overflow: hidden;
-
-        /* This is the animation */
-        transition: all 0.5s ease-in-out;
-        
-        /* Remove default <p> margins */
-        padding: 0 24px;
+        /* Apply the pop-in animation */
+        animation: popIn 0.8s ease-out forwards;
       }
       
       .detail-item {
-        font-size: 1rem;
-        font-weight: 400;
+        font-size: 1.1rem;
+        font-weight: 500;
         padding: 0;
         margin: 0;
         line-height: 1.7;
         text-align: left;
       }
-
-      /* --- INTERACTIVE PART --- */
-      /* When you hover the "submitted-by" text, this reveals the details container */
-      .submitted-by:hover + .details-container {
-        opacity: 1;
-        max-height: 200px; /* Needs to be large enough to show content */
-        margin-top: 15px;
-        padding: 16px 24px;
+      
+      .detail-item strong {
+        font-weight: 700;
+        margin-right: 10px;
       }
       
-    </style>
+    </style><thead>
+</thead><tbody>
+</tbody>
 </head>
 <body>
 
     <header class="hero">
-        <h1>Hello, World! This is my CI/CD pipeline running on Google Cloud Run!</h1>
+        <h1>Hello, World! This is my CI/CD pipeline!</h1>
         <p>This application was deployed automatically by Jenkins.</p>
         <a href="httpss://github.com/ShruttzziiSundarr/ci_cd_cia" class="hero-button">
           View Project on GitHub
         </a>
-        
-        <p class="submitted-by">
-          Submitted by
-        </p>
         
         <div class="details-container">
             <p class="detail-item"><strong>Name:</strong> M S Shruthi</p>
             <p class="detail-item"><strong>Reg. No:</strong> 22011102051</p>
             <p class="detail-item"><strong>Class:</strong> IOT-A</p>
         </div>
-        
         </header>
 
 </body>
