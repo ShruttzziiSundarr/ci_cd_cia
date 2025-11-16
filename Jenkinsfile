@@ -1,10 +1,8 @@
-// This is a "declarative pipeline" script
 pipeline {
     // 1. "agent any" means this pipeline can run on any available Jenkins machine
     agent any
 
     // 2. These are "environment variables" - like settings for our pipeline.
-    // We will set these up inside Jenkins later.
     environment {
         PROJECT_ID = credentials('gcp-project-id')
         REGION = 'us-central1'
@@ -107,6 +105,6 @@ pipeline {
         failure {
             echo "Pipeline Failed!"
             // Here you could add an email notification for failure
-        }
-    }
+        }
+    }
 }
