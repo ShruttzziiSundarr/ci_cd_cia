@@ -7,5 +7,6 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(Server listening on port ${PORT}...);
+  // Use backticks (`) here for the template string
+  console.log(`Server listening on port ${PORT}...`);
 });
